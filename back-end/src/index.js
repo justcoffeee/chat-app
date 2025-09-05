@@ -1,5 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
+import cookieParser from "cookie-parser"
 
 import authRoutes from "./routes/auth.route.js"
 import { connectDB } from "./lib/db.js";
@@ -10,6 +11,7 @@ const PORT = process.env.PORT;
 
 //Code chạy theo dòng nên cần lưu ý khai báo gì trước, khai báo gì sau tránh lỗi đọc file
 app.use(express.json())
+app.use(cookieParser())
 app.use("/api/auth", authRoutes)
 
 app.listen(PORT, () => {
